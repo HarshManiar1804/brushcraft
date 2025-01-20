@@ -1,12 +1,13 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { RegisterLink, LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 function Header() {
   return (
     <header className="bg-black">
       <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
         <Image src="/logo-black.png" alt="Logo" width={100} height={100} />
-
         <div className="flex flex-1 items-center justify-end md:justify-between">
           <nav aria-label="Global" className="hidden md:block">
             <ul className="flex items-center gap-6 text-sm">
@@ -55,7 +56,7 @@ function Header() {
                 </a>
               </li>
 
-              
+
             </ul>
           </nav>
 
@@ -65,14 +66,14 @@ function Header() {
                 className="block rounded-md  px-5 py-2.5 text-sm font-medium text-white transition  dark:hover:bg-teal-500"
                 href="#"
               >
-                Login
+                <LoginLink>Log in</LoginLink>
               </a>
 
               <a
                 className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium  transition hover:text-slate-900 sm:block dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
                 href="#"
               >
-                Register
+                <RegisterLink>Sign up</RegisterLink>
               </a>
             </div>
 
