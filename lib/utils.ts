@@ -10,3 +10,14 @@ export interface iTeam {
   teamName: string;
   _id: string;
 }
+
+export interface iFile {
+  archive: boolean;
+  createdBy: string;
+  document: string;
+  filename: string;
+  teamId: string;
+  whiteboard: string;
+  _id: string;
+  _creationTime: number;
+}
