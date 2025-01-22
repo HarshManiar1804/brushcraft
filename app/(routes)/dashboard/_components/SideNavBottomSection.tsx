@@ -48,7 +48,7 @@ function SideNavBottomSection({ onFileCreate }: any) {
       {/* Add new file button */}
 
       <Dialog>
-        <DialogTrigger className='w-full'><Button className='w-full bg-blue-600 hover:bg-blue-800 justify-start mt-3'>New File</Button>
+        <DialogTrigger asChild className='w-full'><Button className='w-full bg-blue-600 hover:bg-blue-800 justify-start mt-3'>New File</Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

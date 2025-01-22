@@ -14,7 +14,7 @@ import { api } from '@/convex/_generated/api'
 import { iTeam } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-function SideNavTopSection({ user }: any) {
+function SideNavTopSection({ user, setActiveTeamInfo }: any) {
     const menu = [
         {
             id: 1,
@@ -45,6 +45,10 @@ function SideNavTopSection({ user }: any) {
         item?.path && router.push(item.path);
     }
 
+
+    useEffect(() => {
+        activeTeam && setActiveTeamInfo(activeTeam);
+    }, [activeTeam])
     useEffect(() => {
         user && getTeamList();
     }, [user])

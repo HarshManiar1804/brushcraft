@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export interface iTeam {
-  createdBy: String;
-  teamName: String;
-  _id: String;
+  createdBy: string;
+  teamName: string;
+  _id: string;
 }
