@@ -42,7 +42,7 @@ function CreateTeam() {
                     <Input type="text" placeholder="Team name" className='mt-3'
                         onChange={(e) => setTeamName(e.target.value)} />
                 </div>
-                <Button onClick={handleCreateTeam} className='bg-blue-500 mt-9 w-[30%] hover:bg-blue-700'>Create team</Button>
+                <Button onClick={handleCreateTeam} disabled={!(teamName && teamName?.length > 0)} className='bg-blue-500 mt-9 w-[30%] hover:bg-blue-700'>Create team</Button>
             </div>
         </div>
     )
