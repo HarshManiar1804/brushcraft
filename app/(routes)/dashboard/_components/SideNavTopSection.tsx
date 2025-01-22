@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { ChevronDown, LogOut, Settings, Users } from 'lucide-react'
+import { ChevronDown, LayoutGrid, LogOut, Settings, Users } from 'lucide-react'
 import {
     Popover,
     PopoverContent,
@@ -13,6 +13,7 @@ import { useConvex } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import { iTeam } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
+import { Button } from '@/components/ui/button'
 function SideNavTopSection({ user }: any) {
     const menu = [
         {
@@ -100,6 +101,12 @@ function SideNavTopSection({ user }: any) {
                 </PopoverContent>
             </Popover>
 
+
+            {/* All file button  */}
+            <Button variant='outline' className='w-full justify-start gap-2 mt-8 bg-gray-200 font-bold'>
+                <LayoutGrid className='h-5 w-5 ' />
+                All Files
+            </Button>
         </div >
     )
 }
