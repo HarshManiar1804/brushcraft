@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 
-function SideNavBottomSection({ onFileCreate }: any) {
+function SideNavBottomSection({ onFileCreate, totalFiles }: any) {
   const menuListForBottomSection = [
     {
       id: 1,
@@ -76,8 +76,9 @@ function SideNavBottomSection({ onFileCreate }: any) {
 
       <div className="h-4 w-full bg-gray-200 rounded-full mt-3">
 
-        <div className="h-4 w-[40%] bg-blue-600 rounded-full"></div>
-        <h2 className='text-[12px] mt-3'><strong>1</strong> out of 5 Files is used</h2>
+        <div className={`h-4 bg-blue-600 rounded-full`}
+          style={{ width: `${(totalFiles / 5) * 100}%` }}></div>
+        <h2 className='text-[12px] mt-3'><strong>{totalFiles}</strong> out of 5 Files is used</h2>
         <h2 className='mt-1 text-[12px]'>Upgrade your plan to unlimited access.</h2>
       </div>
     </div>
