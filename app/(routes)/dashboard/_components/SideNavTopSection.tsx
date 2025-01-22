@@ -88,8 +88,8 @@ function SideNavTopSection({ user }: any) {
                         <Separator className='mt-2 bg-slate-100' />
                         {/* user info section */}
                         {user &&
-                            <div className="flex gap-2 items-center">
-                                <Image src={user?.picture} alt='user' width={30} height={30} className='rounded-full' />
+                            <div className="flex gap-2 items-center mt-2">
+                                <Image src={user?.picture} alt='user' width={30} height={30} className='rounded-full ' />
                                 <div className="">
                                     <h2 className=' text-[14px] font-bold'>{user?.given_name}{" "}{user?.family_name}</h2>
                                     <h2 className='text-gray-500 text-[12px]'>{user?.email}</h2>
