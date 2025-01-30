@@ -13,11 +13,13 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useRouter } from 'next/navigation';
 
 function FileList() {
     const { fileList_, setFileList_ } = useContext(FileListContext);
     const [fileList, setFileList] = useState<any>();
     const { user }: any = useKindeBrowserClient();
+    const router = useRouter();
     useEffect(() => {
         fileList_ &&
             setFileList(fileList_);
@@ -40,7 +42,8 @@ function FileList() {
 
                         {fileList && fileList.map((item: iFile, index: number) => {
                             return (
-                                <tr className="odd:bg-gray-50" key={index}>
+                                <tr className="odd:bg-gray-50 cursor-pointer" key={index}
+                                    onClick={() => { router.push('/workspace/' + item._id) }}>
                                     <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{item.filename}</td>
                                     <td className="whitespace-nowrap px-4 py-2 text-gray-700">{moment(item._creationTime).format("Do MMMM YYYY")}</td>
                                     <td className="whitespace-nowrap px-4 py-2 text-gray-700">{moment(item._creationTime).format("Do MMMM YYYY")}</td>
