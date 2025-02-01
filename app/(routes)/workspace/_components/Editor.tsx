@@ -10,6 +10,10 @@ import Checklist from '@editorjs/checklist';
 
 import LinkTool from '@editorjs/link';
 import Paragraph from '@editorjs/paragraph';
+import { useMutation } from 'convex/react';
+import { api } from '@/convex/_generated/api';
+import { toast } from 'sonner';
+import { iFile } from '@/lib/utils';
 
 
 const rawDocument = {
@@ -17,16 +21,21 @@ const rawDocument = {
     "blocks": [{
         type: 'header',
         data: {
-            text: 'document name',
+            text: 'Document Name',
             level: 2
         },
         id: "123"
     }],
     "version": "2.8.1"
 }
-function Editor() {
+function Editor({ onSaveTrigger, fileId, fileData }: { onSaveTrigger: any, fileId: any, fileData: iFile }) {
     const ref = useRef<EditorJS>(null);
     const [document, setDocument] = useState(rawDocument);
+    const updateDocument = useMutation(api.files.updateDocument);
+    useEffect(() => {
+        console.log('trigger value', onSaveTrigger);
+        onSaveTrigger && onSaveDocument();
+    }, [onSaveTrigger])
     const initEditor = () => {
         const editor = new EditorJS({
             tools: {
@@ -72,16 +81,31 @@ function Editor() {
                 },
             },
             holder: 'editorjs',
-            data: document,
-
+            data: fileData?.document ? JSON.parse(fileData.document) : rawDocument
         });
 
         ref.current = editor;
     }
-
+    const onSaveDocument = () => {
+        if (ref.current) {
+            ref.current.save().then((outputData) => {
+                console.log('Article data: ', outputData)
+                updateDocument({
+                    _id: fileId, document: JSON.stringify(outputData)
+                }).then(resp => {
+                    toast.success('Document Updated!');
+                }, (e) => {
+                    console.log(e)
+                    toast.error("Server Error!");
+                })
+            }).catch((error) => {
+                console.log('Saving failed: ', error)
+            });
+        }
+    }
     useEffect(() => {
-        initEditor();
-    })
+        fileData && initEditor();
+    }, [fileData]);
     return (
         <div>
             <div className="ml-8" id='editorjs'></div>
