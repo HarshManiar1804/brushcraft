@@ -6,6 +6,7 @@ import { useConvex } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 import { iFile } from '@/lib/utils';
 import { FileEdit } from 'lucide-react';
+import Canvas from '../_components/Canvas';
 
 function Workspace({ params }: any) {
     const { fileId }: any = use(params);
@@ -30,7 +31,9 @@ function Workspace({ params }: any) {
                     <Editor onSaveTrigger={triggerSave} fileId={fileId} fileData={fileData} />
                 </div>
                 {/* canvas */}
-                <div className="h-screen">hello</div>
+                <div className="h-screen">
+                    <Canvas />
+                </div>
             </div>
         </div>
     )
